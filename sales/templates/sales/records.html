@@ -1,0 +1,19 @@
+<!--src/sales/templates/sales/records.html-->
+<h1>Search for sales records</h1>
+
+<hr>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Search</button>
+</form>
+<br>
+
+<!--check if there’s any data in sales_df, then display the data-->
+{% if sales_df %}
+{{sales_df|safe}}
+<br>
+<img src="data:image/png;base64, {{chart|safe}}">
+{% else %}
+<h3> no data</h3>
+{% endif %}
